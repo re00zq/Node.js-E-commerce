@@ -24,7 +24,7 @@ import { AppService } from './app.service';
         new HeaderResolver(['x-lang']),
       ],
     }),
-    MongooseModule.forRoot(''), //  don't forget to isolate it in .env
+    MongooseModule.forRoot('mongodb://localhost:27017'), //  don't forget to isolate it in .env
   ],
   controllers: [AppController],
   providers: [AppService],
