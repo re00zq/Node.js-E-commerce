@@ -7,11 +7,21 @@ import {
 } from 'nestjs-i18n';
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
+import { ConfigModule } from '@nestjs/config';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import authConfig from './config/authConfig';
+import databaseConfig from './config/databaseConfig';
+import mailConfig from './config/mailConfig';
+import serverConfig from './config/serverConfig';
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      load: [databaseConfig, authConfig, mailConfig, serverConfig],
+      isGlobal: true,
+      envFilePath: `.env.development`,
+    }),
     I18nModule.forRoot({
       fallbackLanguage: 'en',
       loaderOptions: {
@@ -24,7 +34,9 @@ import { AppService } from './app.service';
         new HeaderResolver(['x-lang']),
       ],
     }),
-    MongooseModule.forRoot('mongodb://localhost:27017'), //  don't forget to isolate it in .env
+    MongooseModule.forRoot(
+      `${databaseConfig().database.username}://${databaseConfig().host}:${databaseConfig().port}/${databaseConfig().database.name}`,
+    ),
   ],
   controllers: [AppController],
   providers: [AppService],
