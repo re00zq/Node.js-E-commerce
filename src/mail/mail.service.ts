@@ -15,7 +15,7 @@ export class MailService {
     await this.mailerService.sendMail({
       to: user.email,
       // from: '"Support Team" <support@example.com>', // override default from
-      subject: 'Welcome to Topia! Confirm your Email',
+      subject: 'Welcome to our site! Confirm your Email',
       template: './confirmation',
       context: {
         name: user.firstName,

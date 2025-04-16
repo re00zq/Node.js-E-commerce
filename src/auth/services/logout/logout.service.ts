@@ -9,7 +9,7 @@ export class LogoutService implements IlogoutService {
   constructor(private readonly usersService: UsersService) {}
 
   async logout(userId: string): Promise<TokenPair> {
-    await this.usersService.update(userId, { refreshToken: null });
+    await this.usersService.update(userId, { refreshToken: undefined });
     return {
       accessToken: null,
       refreshToken: null,

@@ -53,7 +53,7 @@ export class TokenService implements ITokenService {
   ): Promise<TokenPair> {
     // getting user with Id
     const user: UserDocument | null = await this.usersService.findOne({
-      id: userId,
+      _id: userId,
     });
     if (!user || !user.refreshToken)
       throw new ForbiddenException('Access denied'); // there is no user with this id or the user singned out

@@ -22,7 +22,7 @@ import mailConfig from 'src/config/mailConfig';
           },
         },
         defaults: {
-          from: `"Topia" <${mailConfig().username}>`,
+          from: `"Mahmoud Rezq" <${mailConfig().username}>`,
         },
         template: {
           dir: join(__dirname, '../', '../', 'src', 'mail', 'templates'),

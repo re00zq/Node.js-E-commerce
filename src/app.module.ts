@@ -15,6 +15,9 @@ import authConfig from './config/authConfig';
 import databaseConfig from './config/databaseConfig';
 import mailConfig from './config/mailConfig';
 import serverConfig from './config/serverConfig';
+import { UsersModule } from './users/users.module';
+import { AuthModule } from './auth/auth.module';
+import { MailModule } from './mail/mail.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -37,6 +40,9 @@ import serverConfig from './config/serverConfig';
     MongooseModule.forRoot(
       `${databaseConfig().database.username}://${databaseConfig().host}:${databaseConfig().port}/${databaseConfig().database.name}`,
     ),
+    UsersModule,
+    AuthModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

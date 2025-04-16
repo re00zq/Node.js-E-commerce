@@ -24,7 +24,7 @@ export class User {
   confirmed: boolean;
 
   @Prop()
-  refreshToken: string | null;
+  refreshToken: string;
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
