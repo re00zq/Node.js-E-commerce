@@ -7,11 +7,13 @@ import { User, UserDocument } from '../../../users/user.schema';
 import { TokenService } from '../token/token.service';
 import { IRegisterService } from './register.interface';
 import TokenPair from '../../types/TokenPair';
+import { I18nService } from 'nestjs-i18n';
 @Injectable()
 export class RegisterService implements IRegisterService {
   constructor(
     private readonly usersService: UsersService,
     private readonly tokenService: TokenService,
+    private readonly i18n: I18nService,
   ) {}
 
   async register(user: RegisterDto): Promise<TokenPair> {
@@ -21,7 +23,8 @@ export class RegisterService implements IRegisterService {
     }))
       ? true
       : false;
-    if (isExist) throw new BadRequestException('this email is already taken');
+    if (isExist)
+      throw new BadRequestException(this.i18n.t('auth.EMAIL_Already_TAKEN'));
 
     // hashing password
     user.password = await hash(user.password, 10);

@@ -2,13 +2,14 @@ import { Injectable, ForbiddenException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { hash, compare } from 'bcrypt';
 
-import { User, UserDocument } from '../../../users/user.schema';
+import { UserDocument } from '../../../users/user.schema';
 import authConfig from '../../../config/authConfig';
 import { UsersService } from '../../../users/users.service';
 import { ITokenService } from './token.interface';
 import TokenPair from '../../types/TokenPair';
 import { MailService } from '../../../mail/mail.service';
 import JwtPayload from '../../types/jwtPayload';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class TokenService implements ITokenService {
@@ -16,6 +17,7 @@ export class TokenService implements ITokenService {
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
     private readonly mailService: MailService,
+    private readonly i18n: I18nService,
   ) {}
 
   async getTokens(user: UserDocument): Promise<TokenPair> {
@@ -56,7 +58,7 @@ export class TokenService implements ITokenService {
       _id: userId,
     });
     if (!user || !user.refreshToken)
-      throw new ForbiddenException('Access denied'); // there is no user with this id or the user singned out
+      throw new ForbiddenException(this.i18n.t('auth.ACCESS_DENIED')); // there is no user with this id or the user singned out
 
     // comparing between refresh token in DB and the on in local
     const tokenMatches: boolean = await compare(
@@ -65,7 +67,8 @@ export class TokenService implements ITokenService {
     );
 
     // if the 2 refresh tokens are not match then throw an unauthorized exception
-    if (!tokenMatches) throw new ForbiddenException('Access denied');
+    if (!tokenMatches)
+      throw new ForbiddenException(this.i18n.t('auth.ACCESS_DENIED'));
 
     // if the 2 refresh tokens are match then update both of them with new
     const tokens = await this.getTokens(user);

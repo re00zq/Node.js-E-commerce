@@ -9,8 +9,6 @@ import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import authConfig from './config/authConfig';
 import databaseConfig from './config/databaseConfig';
 import mailConfig from './config/mailConfig';
@@ -44,7 +42,7 @@ import { MailModule } from './mail/mail.module';
     AuthModule,
     MailModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

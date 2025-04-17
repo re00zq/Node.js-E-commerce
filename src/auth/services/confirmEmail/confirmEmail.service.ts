@@ -5,6 +5,7 @@ import {
   Injectable,
   NotFoundException,
 } from '@nestjs/common';
+import { I18nService } from 'nestjs-i18n';
 
 import authConfig from 'src/config/authConfig';
 import { IConfirmEmailService } from './confirmEmail.interface';
@@ -17,6 +18,7 @@ export class ConfirmEmailService implements IConfirmEmailService {
   constructor(
     private readonly jwtService: JwtService,
     private readonly usersService: UsersService,
+    private readonly i18n: I18nService,
   ) {}
 
   async confirmEmail(confirmationToken: string, email: string): Promise<User> {
@@ -30,21 +32,25 @@ export class ConfirmEmailService implements IConfirmEmailService {
       // if token is not valide throw an error
     } catch (_error) {
       // console.log(_error);
-      throw new BadRequestException('this token is not valid');
+      throw new BadRequestException(this.i18n.t('auth.TOKEN_NV'));
     }
     // chech if the user use another user's token
     if (payload.email !== email)
-      throw new BadRequestException(`please use the token sen't to ${email}`);
+      throw new BadRequestException(
+        this.i18n.t('auth.ANOTHER_TOKEN', { args: { email } }),
+      );
 
     // if the token is valid update the confirmed value
     const user: UserDocument | null = await this.usersService.findOne({
       email,
     });
     if (!user) {
-      throw new NotFoundException(`User with email ${email} not found`);
+      throw new NotFoundException(
+        this.i18n.t('auth.EMAIL_NF', { args: { email } }),
+      );
     }
     if (user.confirmed)
-      throw new ForbiddenException('this user is already confirmed');
+      throw new ForbiddenException(this.i18n.t('auth.USER_Already_CONFIRMED'));
     user.confirmed = true;
     this.usersService.update(user._id.toHexString(), user);
     return user;

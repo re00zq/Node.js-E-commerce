@@ -8,7 +8,6 @@ import {
   Query,
   UseInterceptors,
 } from '@nestjs/common';
-import { Request } from 'express';
 
 import { SerializeInterceptor } from 'src/users/interceptors/serialize.interceptor';
 import { UserDto } from 'src/DTOs/user.dto';
