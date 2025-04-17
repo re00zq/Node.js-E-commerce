@@ -4,6 +4,7 @@ import { I18nValidationExceptionFilter, I18nValidationPipe } from 'nestjs-i18n';
 import serverConfig from './config/serverConfig';
 import { JSendInterceptor } from './common/interceptors/jsend.interceptor';
 import { JSendExceptionFilter } from './common/filters/jsend-exception.filter';
+import { RolesGuard } from './common/guards/roles.guard';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
