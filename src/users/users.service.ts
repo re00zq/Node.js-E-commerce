@@ -2,11 +2,15 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model, UpdateResult } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.schema';
-import { RegisterDto } from 'src/DTOs/register.dto';
+import { RegisterDto } from 'src/auth/dto/register.dto';
+import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<User>,
+    private readonly i18n: I18nService,
+  ) {}
 
   async findAll(): Promise<User[]> {
     return this.userModel.find();
@@ -26,16 +30,16 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: Partial<User>): Promise<User> {
-    const updatedCat = await this.userModel
+    const updatedUser = await this.userModel
       .findByIdAndUpdate(
         id,
         { $set: updateUserDto },
         { new: true, runValidators: true },
       )
       .exec();
-    if (!updatedCat) {
-      throw new NotFoundException(`Cat with ID ${id} not found`);
+    if (!updatedUser) {
+      throw new NotFoundException(this.i18n.t('users.USER_ID_NF'));
     }
-    return updatedCat;
+    return updatedUser;
   }
 }

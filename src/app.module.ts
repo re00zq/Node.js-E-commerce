@@ -16,6 +16,8 @@ import serverConfig from './config/serverConfig';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
+import { ProductModule } from './product/product.module';
+import { CategoryModule } from './category/category.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -41,6 +43,8 @@ import { MailModule } from './mail/mail.module';
     UsersModule,
     AuthModule,
     MailModule,
+    ProductModule,
+    CategoryModule,
   ],
   controllers: [],
   providers: [],

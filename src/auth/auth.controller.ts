@@ -10,9 +10,9 @@ import {
 } from '@nestjs/common';
 
 import { SerializeInterceptor } from 'src/users/interceptors/serialize.interceptor';
-import { UserDto } from 'src/DTOs/user.dto';
-import { LoginDto } from 'src/DTOs/login.dto';
-import { RegisterDto } from 'src/DTOs/register.dto';
+import { UserDto } from 'src/users/dto/user.dto';
+import { LoginDto } from 'src/auth/dto/login.dto';
+import { RegisterDto } from 'src/auth/dto/register.dto';
 import { AccessTokenGuard } from './guards/accessToken.guard';
 import { RefreshTokenGuard } from './guards/refreshToken.guard';
 import { LoginService } from './services/login/login.service';
