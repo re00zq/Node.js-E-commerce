@@ -4,20 +4,20 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { User, UserDocument } from 'src/users/user.schema';
 import TokenPair from 'src/auth/types/TokenPair';
 import { ILoginService } from './login.interface';
-import { UsersService } from 'src/users/users.service';
 import { TokenService } from '../token/token.service';
 import { I18nService } from 'nestjs-i18n';
+import { FindUserService } from 'src/users/services/findUser.service';
 
 @Injectable()
 export class LoginService implements ILoginService {
   constructor(
-    private readonly usersService: UsersService,
+    private readonly findUser: FindUserService,
     private readonly tokenService: TokenService,
     private readonly i18n: I18nService,
   ) {}
   async login(email: string, password: string): Promise<TokenPair> {
     // get the user from DB
-    const user: UserDocument | null = await this.usersService.findOne({
+    const user: UserDocument | null = await this.findUser.findOne({
       email,
     });
 

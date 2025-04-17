@@ -4,12 +4,12 @@ import { Strategy, ExtractJwt } from 'passport-jwt';
 
 import authConfig from 'src/config/authConfig';
 import JwtPayload from '../types/jwtPayload';
-import { UsersService } from 'src/users/users.service';
 import { User } from 'src/users/user.schema';
+import { FindUserService } from 'src/users/services/findUser.service';
 
 @Injectable()
 export class AccessTokenStrategy extends PassportStrategy(Strategy, 'jwt') {
-  constructor(private userService: UsersService) {
+  constructor(private findUser: FindUserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       ignoreExpiration: false,
@@ -17,7 +17,7 @@ export class AccessTokenStrategy extends PassportStrategy(Strategy, 'jwt') {
     });
   }
   async validate(payload: JwtPayload): Promise<User | null> {
-    const user: User | null = await this.userService.findOne({
+    const user: User | null = await this.findUser.findOne({
       _id: payload.sub,
     });
     return user;

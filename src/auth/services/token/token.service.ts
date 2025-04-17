@@ -4,18 +4,20 @@ import { hash, compare } from 'bcrypt';
 
 import { UserDocument } from '../../../users/user.schema';
 import authConfig from '../../../config/authConfig';
-import { UsersService } from '../../../users/users.service';
 import { ITokenService } from './token.interface';
 import TokenPair from '../../types/TokenPair';
 import { MailService } from '../../../mail/mail.service';
 import JwtPayload from '../../types/jwtPayload';
 import { I18nService } from 'nestjs-i18n';
+import { UpdateUserService } from 'src/users/services/updateUser.service';
+import { FindUserService } from 'src/users/services/findUser.service';
 
 @Injectable()
 export class TokenService implements ITokenService {
   constructor(
     private readonly jwtService: JwtService,
-    private readonly usersService: UsersService,
+    private readonly updateUser: UpdateUserService,
+    private readonly findUser: FindUserService,
     private readonly mailService: MailService,
     private readonly i18n: I18nService,
   ) {}
@@ -46,7 +48,7 @@ export class TokenService implements ITokenService {
 
   async updateRefreshToken(id: string, refreshToken: string): Promise<void> {
     const hashedRefreshToken: string = await hash(refreshToken, 10);
-    await this.usersService.update(id, { refreshToken: hashedRefreshToken });
+    await this.updateUser.update(id, { refreshToken: hashedRefreshToken });
   }
 
   async refreshTokens(
@@ -54,7 +56,7 @@ export class TokenService implements ITokenService {
     userId: string,
   ): Promise<TokenPair> {
     // getting user with Id
-    const user: UserDocument | null = await this.usersService.findOne({
+    const user: UserDocument | null = await this.findUser.findOne({
       _id: userId,
     });
     if (!user || !user.refreshToken)

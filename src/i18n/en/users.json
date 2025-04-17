@@ -1,3 +1,5 @@
 {
-  "USER_ID_NF": "User with this is not found"
+  "USER_ID_NF": "User with this is not found",
+  "NO_USERS": "There is no users!",
+  "USER_NF": "User not found!"
 }

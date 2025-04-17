@@ -9,7 +9,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 
-import { SerializeInterceptor } from 'src/users/interceptors/serialize.interceptor';
+import { SerializeInterceptor } from 'src/common/interceptors/serialize.interceptor';
 import { UserDto } from 'src/users/dto/user.dto';
 import { LoginDto } from 'src/auth/dto/login.dto';
 import { RegisterDto } from 'src/auth/dto/register.dto';

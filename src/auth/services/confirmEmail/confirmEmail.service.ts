@@ -10,14 +10,16 @@ import { I18nService } from 'nestjs-i18n';
 import authConfig from 'src/config/authConfig';
 import { IConfirmEmailService } from './confirmEmail.interface';
 import JwtPayload from 'src/auth/types/jwtPayload';
-import { UsersService } from 'src/users/users.service';
 import { User, UserDocument } from 'src/users/user.schema';
+import { FindUserService } from 'src/users/services/findUser.service';
+import { UpdateUserService } from 'src/users/services/updateUser.service';
 
 @Injectable()
 export class ConfirmEmailService implements IConfirmEmailService {
   constructor(
+    private readonly findUser: FindUserService,
+    private readonly updateUser: UpdateUserService,
     private readonly jwtService: JwtService,
-    private readonly usersService: UsersService,
     private readonly i18n: I18nService,
   ) {}
 
@@ -41,7 +43,7 @@ export class ConfirmEmailService implements IConfirmEmailService {
       );
 
     // if the token is valid update the confirmed value
-    const user: UserDocument | null = await this.usersService.findOne({
+    const user: UserDocument | null = await this.findUser.findOne({
       email,
     });
     if (!user) {
@@ -52,7 +54,7 @@ export class ConfirmEmailService implements IConfirmEmailService {
     if (user.confirmed)
       throw new ForbiddenException(this.i18n.t('auth.USER_Already_CONFIRMED'));
     user.confirmed = true;
-    this.usersService.update(user._id.toHexString(), user);
+    this.updateUser.update(user._id.toHexString(), user);
     return user;
   }
 }

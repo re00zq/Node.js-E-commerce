@@ -1,15 +1,15 @@
 import { Injectable } from '@nestjs/common';
 
 import { IlogoutService } from './logout.interface';
-import { UsersService } from 'src/users/users.service';
 import TokenPair from 'src/auth/types/TokenPair';
+import { UpdateUserService } from 'src/users/services/updateUser.service';
 
 @Injectable()
 export class LogoutService implements IlogoutService {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(private readonly updateUser: UpdateUserService) {}
 
   async logout(userId: string): Promise<TokenPair> {
-    await this.usersService.update(userId, { refreshToken: undefined });
+    await this.updateUser.update(userId, { refreshToken: undefined });
     return {
       accessToken: null,
       refreshToken: null,
