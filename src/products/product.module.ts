@@ -8,6 +8,7 @@ import { FindProductService } from './services/findProduct.service';
 import { ListProductService } from './services/listProducts.service';
 import { UpdateProductService } from './services/updateProduct.service';
 import { Product, ProductSchema } from './product.schema';
+import { ProductSearchService } from './services/productsSearch.service';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { Product, ProductSchema } from './product.schema';
     FindProductService,
     ListProductService,
     UpdateProductService,
+    ProductSearchService,
   ],
 })
 export class ProductModule {}

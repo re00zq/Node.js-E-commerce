@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  Query,
 } from '@nestjs/common';
 
 import { CreateProductDto } from './dto/create-product.dto';
@@ -20,10 +21,12 @@ import { UpdateProductService } from './services/updateProduct.service';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
 import { RolesGuard } from 'src/common/guards/roles.guard';
+import { ProductSearchService } from './services/productsSearch.service';
 
 @Controller('products')
 export class ProductController {
   constructor(
+    private readonly productSearchService: ProductSearchService,
     private readonly createProduct: CreateProductService,
     private readonly listProducts: ListProductService,
     private readonly findProduct: FindProductService,
@@ -36,6 +39,15 @@ export class ProductController {
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
     return this.createProduct.create(createProductDto);
+  }
+
+  @Get('search')
+  async getAll(@Query('q') query: string) {
+    const products = await this.productSearchService.findAll(query);
+    return {
+      status: 'success',
+      data: { products },
+    };
   }
 
   @Get()
