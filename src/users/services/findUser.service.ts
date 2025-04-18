@@ -15,7 +15,6 @@ export class FindUserService {
     const user: UserDocument | null = await this.userModel
       .findOne(query)
       .exec();
-    if (!user) throw new NotFoundException(this.i18n.t('users.USER_NF'));
     return user;
   }
 }
