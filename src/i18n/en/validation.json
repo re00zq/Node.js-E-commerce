@@ -22,5 +22,9 @@
   "STOCK_NUMBER": "Stock must be a number.",
   "IMAGE_URL_STRING": "Image URL must be a string.",
   "CATEGORY_MONGO_ID": "Category must be a valid MongoDB ID.",
-  "CATEGORY_REQUIRED": "Category is required."
+  "CATEGORY_REQUIRED": "Category is required.",
+
+  "PRODUCT_ID_INVALID": "Product ID must be a valid MongoDB ObjectId.",
+  "QUANTITY_NUMBER": "Quantity must be a number.",
+  "QUANTITY_MIN": "Quantity must be at least 1."
 }

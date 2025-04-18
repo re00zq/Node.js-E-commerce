@@ -17,27 +17,29 @@ import { RemoveFromCartService } from './services/removeFromCart.service';
 import { ClearCartService } from './services/clearCart.service';
 import { AddToCartDto } from './dto/add-to-cart.dto';
 import { UpdateCartItemsDto } from './dto/update-cart-items.dto';
+import { AddToCartService } from './services/addToCart.service';
 
 @Controller('cart')
 @UseGuards(AccessTokenGuard)
 export class CartController {
   constructor(
-    // private readonly addToCartService: AddToCartService,
+    private readonly addToCartService: AddToCartService,
     private readonly getUserCartService: GetUserCartService,
     private readonly updateCartItemService: UpdateCartItemsService,
     private readonly removeFromCartService: RemoveFromCartService,
     private readonly clearCartService: ClearCartService,
   ) {}
 
-  // @Post('add')
-  // async addToCart(@Body() dto: AddToCartDto, @Request() req) {
-  //   const userId = req.user._id;
-  //   const cart = await this.addToCartService.add(userId, dto);
-  //   return {
-  //     status: 'success',
-  //     data: { cart },
-  //   };
-  // }
+  @UseGuards(AccessTokenGuard)
+  @Post('add')
+  async addToCart(@Body() dto: AddToCartDto, @Request() req) {
+    const userId = req.user._id;
+    const cart = await this.addToCartService.add(userId, dto);
+    return {
+      status: 'success',
+      data: { cart },
+    };
+  }
 
   @Get()
   async getUserCart(@Request() req) {

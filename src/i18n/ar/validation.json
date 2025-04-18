@@ -22,5 +22,9 @@
   "STOCK_NUMBER": "يجب أن تكون الكمية رقمًا.",
   "IMAGE_URL_STRING": "يجب أن يكون رابط الصورة نصًا.",
   "CATEGORY_MONGO_ID": "يجب أن يكون المعرف معرف MongoDB صالح.",
-  "CATEGORY_REQUIRED": "الفئة مطلوبة."
+  "CATEGORY_REQUIRED": "الفئة مطلوبة.",
+
+  "PRODUCT_ID_INVALID": "يجب أن يكون معرف المنتج معرف MongoDB صالح.",
+  "QUANTITY_NUMBER": "يجب أن تكون الكمية رقمًا.",
+  "QUANTITY_MIN": "يجب ألا تقل الكمية عن 1."
 }

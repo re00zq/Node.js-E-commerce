@@ -6,6 +6,7 @@ import { RemoveFromCartService } from './services/removeFromCart.service';
 import { UpdateCartItemsService } from './services/updateCartItems.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Cart, CartSchema } from './cart.schema';
+import { AddToCartService } from './services/addToCart.service';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { Cart, CartSchema } from './cart.schema';
   ],
   controllers: [CartController],
   providers: [
+    AddToCartService,
     ClearCartService,
     GetUserCartService,
     RemoveFromCartService,
