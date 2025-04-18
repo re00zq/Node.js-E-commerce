@@ -21,7 +21,7 @@ import { Roles } from 'src/common/decorators/roles.decorator';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
 import { RolesGuard } from 'src/common/guards/roles.guard';
 
-@Controller('product')
+@Controller('products')
 export class ProductController {
   constructor(
     private readonly createProduct: CreateProductService,

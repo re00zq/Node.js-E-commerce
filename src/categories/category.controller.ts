@@ -20,7 +20,7 @@ import { DeleteCategoryService } from './services/deleteCategory.service';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 
-@Controller('category')
+@Controller('categories')
 export class CategoryController {
   constructor(
     private readonly createCategory: CreateCategoryService,

@@ -1,98 +1,153 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🛍️ E-Commerce API – Bilingual (English/Arabic)
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+This is a full-featured bilingual (English/Arabic) e-commerce backend built using **Express.js/NestJS**, **MongoDB**, and **TypeScript**. It includes JWT-based authentication, role-based access control (Admin/User), modular architecture, and follows **JSend** API response conventions.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 📦 Features
 
-## Description
+- ✅ JWT Authentication & Authorization
+- ✅ Role-Based Access Control (Admin/User)
+- ✅ RESTful APIs following **JSend**
+- ✅ Modular & Scalable Project Structure
+- ✅ MongoDB (with Mongoose)
+- ✅ Cart & Order Management
+- ✅ Product & Category CRUD
+- ✅ Bilingual Localization (English / Arabic)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📁 Tech Stack
 
-## Project setup
+- **Backend:** Express.js / NestJS + TypeScript
+- **Database:** MongoDB + Mongoose
+- **Auth:** JWT
+- **Language Support:** i18n (nestjs-i18n)
+- **Validation:** class-validator
+
+## 🚀 Getting Started
+
+### 📌 Prerequisites
+
+- Node.js v18+
+- MongoDB (local or cloud)
+- npm or yarn
+
+### 📥 Installation
 
 ```bash
-$ npm install
+git clone https://github.com/re00zq/Node.js-E-commerce
+cd Node.js-E-commerce
+npm install
 ```
 
-## Compile and run the project
+## ⚙️ Environment Variables
+
+Create a `.env` file in the root directory:
+
+```env
+#DATABASE CONFIGRATION
+DATABASE_HOST=localhost
+DATABASE_PORT=27017
+DATABASE_USERNAME=mongodb
+DATABASE_NAME=e-commerce
+
+#JWT access token
+JWT_SECRET=thisIsveryStrongSecretForJwt
+JWT_EXPIRED_IN="1m"
+
+#JWT refresh token
+JWT_REFRESH_SECRET=thisIsVeryStrongRefreshSecretForJwt
+JWT_REFRESH_EXPIRED_IN="30D"
+
+#JWT confirmation token
+JWT_CONFIRMATION_SECRET="THIS+IS+VERY+STRONG+PASSWORD"
+JWT_CONFIRMATION_EXPIRED_IN="1D"
+
+#MAIL
+MAIL_HOST=smtp.gmail.com
+MAIL_SERVICE=gmail
+SMTP_USERNAME=your.email@gmail.com
+SMTP_PASSWORD="your-SMTP-password"
+SMTP_PORT=587
+
+
+#SERVER
+HOST=localhost
+PORT=3000
+URL=http://localhost:3000
+```
+
+## 🏁 Running the App
 
 ```bash
 # development
-$ npm run start
+npm run start:dev
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+# production
+npm run build
+npm run start:prod
 ```
 
-## Run tests
+## 🌐 Localization
 
-```bash
-# unit tests
-$ npm run test
+This app supports both Arabic and English using `nestjs-i18n`.
 
-# e2e tests
-$ npm run test:e2e
+To change language:
 
-# test coverage
-$ npm run test:cov
+- Send a request header:  
+  `x-lang: en` or `x-lang: ar`
+- Send a request with param:
+  `lang: en` or `lang: ar`
+
+## 📚 API Endpoints Overview
+
+### Auth
+
+| Method | Endpoint         | Description       |
+| ------ | ---------------- | ----------------- |
+| POST   | `/auth/register` | User registration |
+| POST   | `/auth/login`    | Login (JWT token) |
+
+### Products
+
+| Method | Endpoint        | Description         |
+| ------ | --------------- | ------------------- |
+| GET    | `/products`     | List all products   |
+| POST   | `/products`     | Create (Admin only) |
+| PATCH  | `/products/:id` | Update (Admin only) |
+| DELETE | `/products/:id` | Delete (Admin only) |
+
+### Categories
+
+| Method | Endpoint      | Description         |
+| ------ | ------------- | ------------------- |
+| GET    | `/categories` | List all categories |
+| POST   | `/categories` | Create (Admin only) |
+
+### Cart
+
+| Method | Endpoint           | Description           |
+| ------ | ------------------ | --------------------- |
+| GET    | `/cart`            | Get current user cart |
+| POST   | `/cart/add`        | Add product to cart   |
+| PATCH  | `/cart/update`     | Update quantity       |
+| DELETE | `/cart/remove/:id` | Remove item from cart |
+| DELETE | `/cart/clear`      | Clear all cart items  |
+
+## 👮 Role-Based Access Control
+
+- **User:** Can view all products and manage their own cart and orders
+- **Admin:** Can manage products, categories, and all orders
+
+## ✅ API Response Format (JSend)
+
+Every response follows the [JSend specification](https://github.com/omniti-labs/jsend):
+
+```json
+{
+  "status": "success",
+  "data": { "product": { "name": "Phone" } }
+}
 ```
 
-## Deployment
+## 📐 ER Diagram
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
-
-```bash
-$ npm install -g mau
-$ mau deploy
-```
-
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
-
-## Resources
-
-Check out a few resources that may come in handy when working with NestJS:
-
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+The ERD diagram for the collections is included as a `.drawio` file inside the project folder:  
+📁 `docs/ecommerce-erd.drawio`
