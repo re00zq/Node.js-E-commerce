@@ -111,13 +111,14 @@ To change language:
 
 ### Products
 
-| Method | Endpoint        | Description         |
-| ------ | --------------- | ------------------- |
-| GET    | `/products`     | List all products   |
-| Get    | `/products/:id` | Fing Product        |
-| POST   | `/products`     | Create (Admin only) |
-| PATCH  | `/products/:id` | Update (Admin only) |
-| DELETE | `/products/:id` | Delete (Admin only) |
+| Method | Endpoint                   | Description         |
+| ------ | -------------------------- | ------------------- |
+| GET    | `/products`                | List all products   |
+| Get    | `/products/:id`            | Fing Product        |
+| POST   | `/products`                | Create (Admin only) |
+| PATCH  | `/products/:id`            | Update (Admin only) |
+| DELETE | `/products/:id`            | Delete (Admin only) |
+| Get    | `/products/search?q=query` | Search in products  |
 
 ### Categories
 
