@@ -1,5 +1,26 @@
 {
   "NAME_EN_REQUIRED": "الاسم باللغة الإنجليزية مطلوب",
   "NAME_AR_REQUIRED": "الاسم باللغة العربية مطلوب",
-  "DESCRIPTION_STRING": "الوصف يجب أن يكون نصًا"
+  "DESCRIPTION_STRING": "الوصف يجب أن يكون نصًا",
+
+  "FIRST_NAME_STRING": "يجب أن يكون الاسم الأول نصًا.",
+  "FIRST_NAME_REQUIRED": "الاسم الأول مطلوب.",
+  "LAST_NAME_STRING": "يجب أن يكون اسم العائلة نصًا.",
+  "LAST_NAME_REQUIRED": "اسم العائلة مطلوب.",
+  "EMAIL_INVALID": "يجب أن يكون البريد الإلكتروني صالحًا.",
+  "EMAIL_REQUIRED": "البريد الإلكتروني مطلوب.",
+  "PASSWORD_STRING": "يجب أن تكون كلمة المرور نصًا.",
+  "PASSWORD_REQUIRED": "كلمة المرور مطلوبة.",
+
+  "NAME_EN_STRING": "يجب أن يكون الاسم بالإنجليزية نصًا.",
+  "NAME_AR_STRING": "يجب أن يكون الاسم بالعربية نصًا.",
+  "DESCRIPTION_EN_STRING": "يجب أن يكون الوصف بالإنجليزية نصًا.",
+  "DESCRIPTION_EN_REQUIRED": "الوصف بالإنجليزية مطلوب.",
+  "DESCRIPTION_AR_STRING": "يجب أن يكون الوصف بالعربية نصًا.",
+  "DESCRIPTION_AR_REQUIRED": "الوصف بالعربية مطلوب.",
+  "PRICE_NUMBER": "يجب أن يكون السعر رقمًا.",
+  "STOCK_NUMBER": "يجب أن تكون الكمية رقمًا.",
+  "IMAGE_URL_STRING": "يجب أن يكون رابط الصورة نصًا.",
+  "CATEGORY_MONGO_ID": "يجب أن يكون المعرف معرف MongoDB صالح.",
+  "CATEGORY_REQUIRED": "الفئة مطلوبة."
 }

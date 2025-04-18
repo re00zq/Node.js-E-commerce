@@ -1,5 +1,26 @@
 {
   "NAME_EN_REQUIRED": "English name is required",
   "NAME_AR_REQUIRED": "Arabic name is required",
-  "DESCRIPTION_STRING": "Description must be a string"
+  "DESCRIPTION_STRING": "Description must be a string",
+
+  "FIRST_NAME_STRING": "First name must be a string.",
+  "FIRST_NAME_REQUIRED": "First name is required.",
+  "LAST_NAME_STRING": "Last name must be a string.",
+  "LAST_NAME_REQUIRED": "Last name is required.",
+  "EMAIL_INVALID": "Email must be a valid email address.",
+  "EMAIL_REQUIRED": "Email is required.",
+  "PASSWORD_STRING": "Password must be a string.",
+  "PASSWORD_REQUIRED": "Password is required.",
+
+  "NAME_EN_STRING": "English name must be a string.",
+  "NAME_AR_STRING": "Arabic name must be a string.",
+  "DESCRIPTION_EN_STRING": "English description must be a string.",
+  "DESCRIPTION_EN_REQUIRED": "English description is required.",
+  "DESCRIPTION_AR_STRING": "Arabic description must be a string.",
+  "DESCRIPTION_AR_REQUIRED": "Arabic description is required.",
+  "PRICE_NUMBER": "Price must be a number.",
+  "STOCK_NUMBER": "Stock must be a number.",
+  "IMAGE_URL_STRING": "Image URL must be a string.",
+  "CATEGORY_MONGO_ID": "Category must be a valid MongoDB ID.",
+  "CATEGORY_REQUIRED": "Category is required."
 }
