@@ -10,7 +10,6 @@ import {
   Param,
 } from '@nestjs/common';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
-// import { AddToCartService } from './services/addToCart.service';
 import { GetUserCartService } from './services/getUserCart.service';
 import { UpdateCartItemsService } from './services/updateCartItems.service';
 import { RemoveFromCartService } from './services/removeFromCart.service';
@@ -31,7 +30,7 @@ export class CartController {
   ) {}
 
   @UseGuards(AccessTokenGuard)
-  @Post('add')
+  @Post()
   async addToCart(@Body() dto: AddToCartDto, @Request() req) {
     const userId = req.user._id;
     const cart = await this.addToCartService.add(userId, dto);
@@ -51,7 +50,7 @@ export class CartController {
     };
   }
 
-  @Patch('update')
+  @Patch()
   async updateItem(@Body() dto: UpdateCartItemsDto, @Request() req) {
     const userId = req.user._id;
     const cart = await this.updateCartItemService.update(userId, dto);
@@ -61,7 +60,7 @@ export class CartController {
     };
   }
 
-  @Delete('remove/:productId')
+  @Delete(':productId')
   async removeItem(@Param('productId') productId: string, @Request() req) {
     const userId = req.user._id;
     const cart = await this.removeFromCartService.remove(userId, productId);
@@ -71,13 +70,9 @@ export class CartController {
     };
   }
 
-  @Delete('clear')
+  @Delete()
   async clearCart(@Request() req) {
     const userId = req.user._id;
-    await this.clearCartService.clear(userId);
-    return {
-      status: 'success',
-      message: 'Cart cleared',
-    };
+    return await this.clearCartService.clear(userId);
   }
 }

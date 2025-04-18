@@ -104,12 +104,17 @@ To change language:
 | ------ | ---------------- | ----------------- |
 | POST   | `/auth/register` | User registration |
 | POST   | `/auth/login`    | Login (JWT token) |
+| POST   | `/auth/refresh`  | Refresh Token     |
+| POST   | `{ConfirmToken}` | Confirm Email     |
+| POST   | `/auth/register` | User registration |
+| POST   | `/auth/logout`   | Logout            |
 
 ### Products
 
 | Method | Endpoint        | Description         |
 | ------ | --------------- | ------------------- |
 | GET    | `/products`     | List all products   |
+| Get    | `/products/:id` | Fing Product        |
 | POST   | `/products`     | Create (Admin only) |
 | PATCH  | `/products/:id` | Update (Admin only) |
 | DELETE | `/products/:id` | Delete (Admin only) |
@@ -120,6 +125,12 @@ To change language:
 | ------ | ------------- | ------------------- |
 | GET    | `/categories` | List all categories |
 | POST   | `/categories` | Create (Admin only) |
+
+### Users
+
+| Method | Endpoint      | Description             |
+| ------ | ------------- | ----------------------- |
+| GET    | `/categories` | List users (Admin only) |
 
 ### Cart
 
