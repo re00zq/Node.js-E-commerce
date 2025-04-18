@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   UseGuards,
+  UseFilters,
 } from '@nestjs/common';
 
 import { RolesGuard } from 'src/common/guards/roles.guard';
@@ -19,6 +20,7 @@ import { UpdateCategoryService } from './services/updateCategory.service';
 import { DeleteCategoryService } from './services/deleteCategory.service';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
+import { I18nValidationExceptionFilter } from 'nestjs-i18n';
 
 @Controller('categories')
 export class CategoryController {
@@ -32,6 +34,7 @@ export class CategoryController {
 
   @Roles(['admin'])
   @UseGuards(AccessTokenGuard, RolesGuard)
+  // @UseFilters(new I18nValidationExceptionFilter())
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.createCategory.create(createCategoryDto);

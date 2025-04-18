@@ -1,0 +1,5 @@
+{
+  "NAME_EN_REQUIRED": "English name is required",
+  "NAME_AR_REQUIRED": "Arabic name is required",
+  "DESCRIPTION_STRING": "Description must be a string"
+}

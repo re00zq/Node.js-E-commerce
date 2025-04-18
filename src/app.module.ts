@@ -8,6 +8,7 @@ import {
 import { join } from 'path';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { APP_FILTER } from '@nestjs/core';
 
 import authConfig from './config/authConfig';
 import databaseConfig from './config/databaseConfig';
@@ -16,9 +17,10 @@ import serverConfig from './config/serverConfig';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 import { MailModule } from './mail/mail.module';
-import { ProductModule } from './product/product.module';
-import { CategoryModule } from './category/category.module';
+import { ProductModule } from './products/product.module';
+import { CategoryModule } from './categories/category.module';
 import { CartModule } from './cart/cart.module';
+import { JSendExceptionFilter } from './common/filters/jsend-exception.filter'; // Adjust path as needed
 
 @Module({
   imports: [
@@ -50,6 +52,11 @@ import { CartModule } from './cart/cart.module';
     CartModule,
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: JSendExceptionFilter,
+    },
+  ],
 })
 export class AppModule {}

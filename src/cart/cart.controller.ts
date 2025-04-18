@@ -10,7 +10,7 @@ import {
   Param,
 } from '@nestjs/common';
 import { AccessTokenGuard } from 'src/auth/guards/accessToken.guard';
-import { AddToCartService } from './services/addToCart.service';
+// import { AddToCartService } from './services/addToCart.service';
 import { GetUserCartService } from './services/getUserCart.service';
 import { UpdateCartItemsService } from './services/updateCartItems.service';
 import { RemoveFromCartService } from './services/removeFromCart.service';
@@ -22,22 +22,22 @@ import { UpdateCartItemsDto } from './dto/update-cart-items.dto';
 @UseGuards(AccessTokenGuard)
 export class CartController {
   constructor(
-    private readonly addToCartService: AddToCartService,
+    // private readonly addToCartService: AddToCartService,
     private readonly getUserCartService: GetUserCartService,
     private readonly updateCartItemService: UpdateCartItemsService,
     private readonly removeFromCartService: RemoveFromCartService,
     private readonly clearCartService: ClearCartService,
   ) {}
 
-  @Post('add')
-  async addToCart(@Body() dto: AddToCartDto, @Request() req) {
-    const userId = req.user._id;
-    const cart = await this.addToCartService.add(userId, dto);
-    return {
-      status: 'success',
-      data: { cart },
-    };
-  }
+  // @Post('add')
+  // async addToCart(@Body() dto: AddToCartDto, @Request() req) {
+  //   const userId = req.user._id;
+  //   const cart = await this.addToCartService.add(userId, dto);
+  //   return {
+  //     status: 'success',
+  //     data: { cart },
+  //   };
+  // }
 
   @Get()
   async getUserCart(@Request() req) {

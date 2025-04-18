@@ -93,7 +93,7 @@ To change language:
 
 - Send a request header:  
   `x-lang: en` or `x-lang: ar`
-- Send a request with param:
+- Send a request with param:  
   `lang: en` or `lang: ar`
 
 ## 📚 API Endpoints Overview
