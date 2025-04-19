@@ -129,9 +129,9 @@ To change language:
 
 ### Users
 
-| Method | Endpoint      | Description             |
-| ------ | ------------- | ----------------------- |
-| GET    | `/categories` | List users (Admin only) |
+| Method | Endpoint | Description             |
+| ------ | -------- | ----------------------- |
+| GET    | `/users` | List users (Admin only) |
 
 ### Cart
 

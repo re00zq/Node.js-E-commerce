@@ -20,5 +20,6 @@ import { AddToCartService } from './services/addToCart.service';
     RemoveFromCartService,
     UpdateCartItemsService,
   ],
+  exports: [ClearCartService],
 })
 export class CartModule {}

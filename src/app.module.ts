@@ -21,6 +21,7 @@ import { ProductModule } from './products/product.module';
 import { CategoryModule } from './categories/category.module';
 import { CartModule } from './cart/cart.module';
 import { JSendExceptionFilter } from './common/filters/jsend-exception.filter'; // Adjust path as needed
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -50,6 +51,7 @@ import { JSendExceptionFilter } from './common/filters/jsend-exception.filter'; 
     ProductModule,
     CategoryModule,
     CartModule,
+    OrdersModule,
   ],
   controllers: [],
   providers: [

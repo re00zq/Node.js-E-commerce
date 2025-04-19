@@ -2,14 +2,10 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '../user.schema';
-import { I18nService } from 'nestjs-i18n';
 
 @Injectable()
 export class FindUserService {
-  constructor(
-    @InjectModel(User.name) private userModel: Model<User>,
-    private readonly i18n: I18nService,
-  ) {}
+  constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async findOne(query: object): Promise<UserDocument | null> {
     const user: UserDocument | null = await this.userModel
