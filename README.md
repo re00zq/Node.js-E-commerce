@@ -1,4 +1,4 @@
-# 🛍️ E-Commerce API – Bilingual (English/Arabic)
+# 🛒 E-Commerce API – Bilingual (English/Arabic)
 
 This is a full-featured bilingual (English/Arabic) e-commerce backend built using **Express.js/NestJS**, **MongoDB**, and **TypeScript**. It includes JWT-based authentication, role-based access control (Admin/User), modular architecture, and follows **JSend** API response conventions.
 
@@ -42,7 +42,7 @@ npm install
 Create a `.env` file in the root directory:
 
 ```env
-#DATABASE CONFIGRATION
+#DATABASE CONFIGURATION
 DATABASE_HOST=localhost
 DATABASE_PORT=27017
 DATABASE_USERNAME=mongodb
@@ -67,7 +67,6 @@ SMTP_USERNAME=your.email@gmail.com
 SMTP_PASSWORD="your-SMTP-password"
 SMTP_PORT=587
 
-
 #SERVER
 HOST=localhost
 PORT=3000
@@ -91,10 +90,10 @@ This app supports both Arabic and English using `nestjs-i18n`.
 
 To change language:
 
-- Send a request header:  
+- Add a request header:  
   `x-lang: en` or `x-lang: ar`
-- Send a request with param:  
-  `lang: en` or `lang: ar`
+- Or send a query parameter:  
+  `lang=en` or `lang=ar`
 
 ## 📚 API Endpoints Overview
 
@@ -105,20 +104,19 @@ To change language:
 | POST   | `/auth/register` | User registration |
 | POST   | `/auth/login`    | Login (JWT token) |
 | POST   | `/auth/refresh`  | Refresh Token     |
-| POST   | `{ConfirmToken}` | Confirm Email     |
-| POST   | `/auth/register` | User registration |
 | POST   | `/auth/logout`   | Logout            |
+| POST   | `{ConfirmToken}` | Confirm Email     |
 
 ### Products
 
 | Method | Endpoint                   | Description         |
 | ------ | -------------------------- | ------------------- |
 | GET    | `/products`                | List all products   |
-| Get    | `/products/:id`            | Fing Product        |
+| GET    | `/products/:id`            | Find Product        |
 | POST   | `/products`                | Create (Admin only) |
 | PATCH  | `/products/:id`            | Update (Admin only) |
 | DELETE | `/products/:id`            | Delete (Admin only) |
-| Get    | `/products/search?q=query` | Search in products  |
+| GET    | `/products/search?q=query` | Search in products  |
 
 ### Categories
 
@@ -132,6 +130,16 @@ To change language:
 | Method | Endpoint | Description             |
 | ------ | -------- | ----------------------- |
 | GET    | `/users` | List users (Admin only) |
+
+### Orders
+
+| Method | Endpoint       | Description               |
+| ------ | -------------- | ------------------------- |
+| POST   | `/orders/make` | Make an Order             |
+| GET    | `/orders`      | List orders (Admin only)  |
+| GET    | `/orders/mine` | Get user order            |
+| DELETE | `/orders/mine` | Delete user order         |
+| DELETE | `/orders`      | Delete order (Admin only) |
 
 ### Cart
 
@@ -159,7 +167,21 @@ Every response follows the [JSend specification](https://github.com/omniti-labs/
 }
 ```
 
-## 📐 ER Diagram
+## 📊 ER Diagram
 
 The ERD diagram for the collections is included as a `.drawio` file inside the project folder:  
 📁 `docs/ecommerce-erd.drawio`
+
+To view it, open the file using [draw.io](https://app.diagrams.net/).
+
+## 📨 Postman Collection
+
+You can test all API endpoints through this Postman workspace:
+
+📈 [Open Postman Workspace](https://www.postman.com/workspace/My-Workspace~8335a9b7-8efc-448c-8b85-6512df8c95c1/collection/25624995-1b200947-fdf6-417e-80c7-fcdeeb6066cc?action=share&creator=25624995&active-environment=25624995-f55b709a-deb3-4ade-84a6-2f2df60eb53f)
+
+> Make sure to configure the `.env` file before using the collection.
+
+---
+
+Happy Coding! 🚀
