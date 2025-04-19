@@ -178,7 +178,7 @@ To view it, open the file using [draw.io](https://app.diagrams.net/).
 
 You can test all API endpoints through this Postman workspace:
 
-📈 [Open Postman Workspace](https://www.postman.com/workspace/My-Workspace~8335a9b7-8efc-448c-8b85-6512df8c95c1/collection/25624995-1b200947-fdf6-417e-80c7-fcdeeb6066cc?action=share&creator=25624995&active-environment=25624995-f55b709a-deb3-4ade-84a6-2f2df60eb53f)
+📈 [Open Postman Workspace](https://www.postman.com/re00zq/public-workspace/folder/bmy2nkj/auth)
 
 > Make sure to configure the `.env` file before using the collection.
 
